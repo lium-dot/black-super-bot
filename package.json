@@ -1,5 +1,5 @@
 { 
-   "name": "RAVEN-AI", 
+   "name": "BLACK MD", 
    "version": "2.0.0", 
    "description": "WhatsApp Multi Device Bot", 
    "main": "index.js", 
@@ -19,7 +19,7 @@
      "whatsapp-multi-device" 
    ], 
    "base": "https://github.com/DikaArdnt/Hisoka-Morou", 
-   "author": "Nick Hunter", 
+   "author": "Marchant", 
    "license": "MIT", 
    "dependencies": { 
      "@whiskeysockets/baileys": "^6.7.16",
@@ -62,6 +62,7 @@
      "crypto": "^1.0.1", 
      "child-process": "^1.0.2", 
      "jimp": "^0.16.13",
+     "megajs": "^1.1.0",
      "human-readable": "^0.2.1", 
      "quickmongo": "^5.2.0", 
      "lodash": "^4.17.21",
@@ -88,10 +89,10 @@
    }, 
    "repository": { 
      "type": "git", 
-     "url": "git+https://github.com/HunterNick2/RAVEN-BOT.git" 
+     "url": "git+https://github.com/Blackie254/black-super-bot.git" 
    }, 
    "bugs": { 
-     "url": "https://github.com/HunterNick2/RAVEN-BOT/issues" 
+     "url": "https://github.com/Blackie254/black-super-bot/issues" 
    }, 
-   "homepage": "https://github.com/HunterNick2/RAVEN-BOT#readme" 
+   "homepage": "https://github.com/Blackie254/black-super-bot#readme" 
    }

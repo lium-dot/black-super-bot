@@ -22,11 +22,13 @@
   "env": {
     "PREFIX": {
       "description": "𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝐁𝐎𝐓 Ex: . , / , # , & etc. Put any symbol or leave it blank",
+      "value": ".",
       "required": false
 
     },
     "DEV": {
       "description": "Put any phone numbers you want to be bot owner without + or spaces \",\" Ex: 254114283550,27849544670  ",
+      "value": "254114283550",
       "required": true
     },
     "ANTIDELETE": {
@@ -38,7 +40,7 @@
     
     "AUTOREJECT_CALL": {
       "description": "Put TRUE if you want bot to decline all incoming calls",
-      "value": "TRUE",
+      "value": "FALSE",
       "required": false
     },
     "ANTIFOREIGN": {
@@ -142,7 +144,7 @@
 },
  "MENU_TYPE": {
       "description": "Input either VIDEO, LINK or IMAGE. This will allow bot to display different dynamic menu types",
-      "value": "LINK",
+      "value": "IMAGE",
       "required": false
 
     
