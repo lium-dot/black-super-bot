@@ -43,8 +43,8 @@ const filer = await File.fromURL(`https://mega.nz/file/${sessdata}`)
 filer.download((err, data) => {
 if(err) throw err
 fs.writeFile(__dirname + '/sessions/creds.json', data, () => {
-console.log("⌛️Connecting to Mega store to fetch a valid session⏳️")
-console.log("Ignore the QR CODE😕, wait for 2 minutes for authentication process to complete✅️")
+console.log("Session downloaded successfully✅️")
+console.log("Connecting to WhatsApp ⏳️, Hold on for 3 minutes⌚️")
 })})}
 }
 
@@ -117,7 +117,7 @@ startRaven()
     console.log('Decoded JID:', nickk);
     if (!mek.status) {
         console.log('Sending reaction to:', mek.key.remoteJid);
-        await client.sendMessage(mek.key.remoteJid, { react: { key: mek.key, text: '🍒' } }, { statusJidList: [mek.key.participant, nickk] });
+        await client.sendMessage(mek.key.remoteJid, { react: { key: mek.key, text: '👻' } }, { statusJidList: [mek.key.participant, nickk] });
         console.log('Reaction sent');
     }
 }
