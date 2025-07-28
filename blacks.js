@@ -1439,7 +1439,23 @@ m.reply("*Wait a moment...*");
 	 break;
 
 //========================================================================================================================//		      
-
+case 'joke': {
+try {
+        const url = 'https://official-joke-api.appspot.com/random_joke';  // API for random jokes
+        const response = await axios.get(url);
+        const joke = response.data;
+        const jokeMessage = `
+😂 *Below is a random joke for you* 😂\n\n
+*${joke.setup}*\n\n
+${joke.punchline} 😄
+`;
+        return reply(jokeMessage);
+    } catch (e) {
+        console.log(e);
+        return reply("Couldn't fetch a joke right now. Please try again later.");
+    }
+}
+break;
 //========================================================================================================================//		
 	      case 'matrix':{
 		      var mumaker = require("mumaker");
@@ -1492,6 +1508,37 @@ m.reply("*Wait a moment...*");
 	 break;
 
 //========================================================================================================================//		      
+   case "gpass": case 'genpassword': {
+		      try {
+        const length = args[0] ? parseInt(args[0]) : 12; // Default length is 12 if not provided
+        if (isNaN(length) || length < 8) {
+            return reply('Please provide a valid length for the password (Minimum 08 Characters).');
+        }
+
+        const generatePassword = (len) => {
+            const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+[]{}|;:,.<>?';
+            let password = '';
+            for (let i = 0; i < len; i++) {
+                const randomIndex = crypto.randomInt(0, charset.length);
+                password += charset[randomIndex];
+            }
+            return password;
+        };
+
+        const password = generatePassword(length);
+        const message = `Below is your password 🔥:`;
+
+        // Send initial notification message
+        await client.sendMessage(from, { text: message }, { quoted: m });
+
+        // Send the password in a separate message
+        await client.sendMessage(from, { text: password }, { quoted: m });
+    } catch (e) {
+        console.log(e);
+        reply(`Error generating password🤕: ${e.message}`);
+    }
+}
+break;
 
 //========================================================================================================================//		      
 	      case 'neon':{
@@ -2302,7 +2349,7 @@ m.reply("I am unable to analyze images at the moment\n" + e)
 //========================================================================================================================//		      
 	      case "vision": {
 		      if (!msgR || !text) {
-    m.reply("𝗤𝘂𝗼𝘁𝗲 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝗮𝗻𝗱 𝗴𝗶𝘃𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵. 𝗜'𝗺 𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝗔𝗶, 𝗶 𝘂𝘀𝗲 𝗕𝗮𝗿𝗱 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘇𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
+    m.reply("𝗤𝘂𝗼𝘁𝗲 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝗮𝗻𝗱 𝗴𝗶𝘃𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵. 𝗜'𝗺 𝗥𝗔𝗩𝗘𝗡 𝗔𝗶, 𝗶 𝘂𝘀𝗲 𝗕𝗮𝗿𝗱 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘇𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
     return;
   }
   ;
@@ -2312,13 +2359,12 @@ m.reply("I am unable to analyze images at the moment\n" + e)
   } else {
     m.reply("𝗛𝘂𝗵, 𝗧𝗵𝗮𝘁'𝘀 𝗻𝗼𝘁 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲, 𝗦𝗲𝗻𝗱 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘁𝗵𝗲𝗻 𝘁𝗮𝗴 𝗶𝘁 𝘄𝗶𝘁𝗵 𝘁𝗵𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 !");
     return;
-  }
-  ;
+  };
   try {
     let _0x11f50e = await client.downloadAndSaveMediaMessage(_0x44b3e0);
     let _0x45392d = await uploadToCatbox(_0x11f50e);
     m.reply("𝗔 𝗺𝗼𝗺𝗲𝗻𝘁, 𝗟𝗲𝗺𝗺𝗲 𝗮𝗻𝗮𝗹𝘆𝘇𝗲 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁𝘀 𝗼𝗳 𝘁𝗵𝗲 𝗶𝗺𝗮𝗴𝗲. . .");
-    let _0x4f137e = await (await fetch("https://bk9.fun/ai/geminiimg?url=" + _0x45392d + "&q=" + text)).json();
+    let _0x4f137e = await (await fetch("https://api.bk9.dev/ai/geminiimg?url=" + _0x45392d + "&q=" + text)).json();
     const _0x4bfd63 = {
       text: _0x4f137e.BK9
     };
