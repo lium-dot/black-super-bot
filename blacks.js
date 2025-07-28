@@ -678,7 +678,9 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😊, ${getGreeting()}\n\n╔═━�
 ║   🔗 𝐮𝐫𝐥
 ║   🖼 𝐢𝐦𝐚𝐠𝐞
 ║   💻 𝐬𝐲𝐬𝐭𝐞𝐦
-║   🤖 𝐛𝐥𝐚𝐜𝐤𝐬
+║   🤖 𝐛𝐥𝐚𝐜𝐤𝐲
+║   😅 𝐣𝐨𝐤𝐞𝐬
+║   ♑ 𝐠𝐩𝐚𝐬𝐬
 ╚════════════════════════╝
 
 ╔════════════════════════╗
@@ -706,7 +708,7 @@ client.sendMessage(m.chat, {
                         contextInfo: {
                             externalAdReply: {
                                 showAdAttribution: true,
-                                title: `𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝐌𝐃`,
+                                title: `𝐁𝐋𝐀𝐂𝐊-𝐌𝐃`,
                                 body: `${runtime(process.uptime())}`,
                                 thumbnail: fs.readFileSync('./Media/blackmachant.jpg'),
                                 sourceUrl: 'https://wa.me/254114283550?text=Hello👋+black+Nihostie+Bot+Mkuu+😔',
