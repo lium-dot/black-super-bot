@@ -3701,19 +3701,19 @@ if (!text.includes("pin.it")) {
         return m.reply("That is not a pinterest link.");
     }	
 await client.sendMessage(m.chat, {
-      react: { text: '🔄', key: m.key }
+      react: { text: '✅️', key: m.key }
     });
  
 try {
         const pinterestUrl = text;
-        const response = await axios.get(`https://bk9.fun/download/pinterest?url=${encodeURIComponent(pinterestUrl)}`);
+        const response = await axios.get(`https://api.bk9.dev/download/pinterest?url=${encodeURIComponent(pinterestUrl)}`);
 
         if (!response.data.status) {
             return reply('Unable to fetch pinterest data.');
         }
 
         const media = response.data.BK9;
-        const capp = `𝑫𝑶𝑾𝑵𝑳𝑶𝑨𝑫𝑬𝑫 𝑩𝒀 𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝐁𝐎𝐓`;
+        const capp = `𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗕𝗟𝗔𝗖𝗞-𝗠𝗗`;
 
 if (media.length > 0) {
             const videoUrl = media.find(item => item.url.includes('.mp4'))?.url;
