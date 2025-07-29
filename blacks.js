@@ -3660,9 +3660,16 @@ break;
 if (!text) {
     return m.reply('Please provide a TikTok video link.');
   }
+	      
+if (!text.includes("tiktok.com")) {
+        return m.reply("That is not a TikTok link.");
+}
+await client.sendMessage(m.chat, {
+      react: { text: '✅️', key: m.key }
+    });
 
-  try {
-    const response = await axios.get(`https://bk9.fun/download/tiktok?url=${encodeURIComponent(text)}`);
+ try {
+    const response = await axios.get(`https://api.bk9.dev/download/tiktok?url=${encodeURIComponent(text)}`);
 
     if (response.data.status && response.data.BK9) {
       const videoUrl = response.data.BK9.BK9;
@@ -3679,7 +3686,7 @@ if (!text) {
 
       await client.sendMessage(m.chat, {
         video: { url: videoUrl },
-        caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕Y 𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝐁𝐎𝐓",
+        caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗕𝗟𝗔𝗖𝗞-𝗠𝗗",
         gifPlayback: false
       }, { quoted: m });
 
