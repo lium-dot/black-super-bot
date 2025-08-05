@@ -2906,7 +2906,7 @@ m.reply("An error occured.")
 
 //========================================================================================================================//		      
 	      case "alive": case "test": {
-		      const audiovn = "./Media/menu.mp3";
+		      const audiovn = "./Media/kv.mp3";
     const dooc = {
         audio: {
           url: audiovn
@@ -2914,14 +2914,14 @@ m.reply("An error occured.")
         mimetype: 'audio/mp4',
         ptt: true,
         waveform:  [100, 0, 100, 0, 100, 0, 100],
-        fileName: "𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓",
+        fileName: "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃",
 
         contextInfo: {
           mentionedJid: [m.sender],
           externalAdReply: {
           title: "𝗛𝗶 𝗛𝘂𝗺𝗮𝗻👋, 𝗜 𝗮𝗺 𝗔𝗹𝗶𝘃𝗲 𝗻𝗼𝘄",
-          body: "𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓",
-          thumbnailUrl: "https://files.catbox.moe/xiflcv.jpeg",
+          body: "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃",
+          thumbnailUrl: "https://files.catbox.moe/rql1hh.jpeg",
           sourceUrl: '',
           mediaType: 1,
           renderLargerThumbnail: true
@@ -2935,7 +2935,7 @@ m.reply("An error occured.")
 	case "removebg": {
 		      try {
 
-const cap = "𝗘𝗱𝗶𝘁𝗲𝗱 𝗯𝘆 𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝐁𝐎𝐓";
+const cap = "𝗘𝗱𝗶𝘁𝗲𝗱 𝗯𝘆 𝐁𝐋𝐀𝐂𝐊 𝐌𝐃 𝐁𝐎𝐓";
 
 if (!m.quoted) return m.reply("Send the image then tag it with the command.");
 
