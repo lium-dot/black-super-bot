@@ -16,6 +16,8 @@ const { DateTime } = require('luxon');
 const uploadtoimgur = require('./lib/imgur');
 const advice = require("badadvice");
 const BASE_URL = 'https://noobs-api.top';
+const ytdownload = require("./lib/ytdl");
+const downloadVideo = require('./lib/ytdl2');
 const {c, cpp, node, python, java} = require('compile-run');
 const acrcloud = require("acrcloud"); 
 const ytdl = require("ytdl-core");
@@ -1006,48 +1008,49 @@ await client.sendMessage(
 //========================================================================================================================//
 case "video": {		      
 if (!text) {
-	return client.sendMessage(from, { text: 'Please provide a song name.' }, { quoted: m });
+    return m.reply("Please provide a video name!");
+  }
+
+  try {
+    const { videos } = await yts(text);
+    if (!videos || videos.length === 0) {
+      return m.reply("❌ No videos found.");
     }
 
-try {
-     const search = await yts(text);
-     const video = search.videos[0];
+    const video = videos[0];
+    const url = video.url;
 
-        if (!video) {
-          return client.sendMessage(from, {
-            text: 'No results found for your query.'
-          }, { quoted: m });
-        }
-	
-m.reply("_Please wait your download is in progress_");
-	
-        const safeTitle = video.title.replace(/[\\/:*?"<>|]/g, '');
-        const fileName = `${safeTitle}.mp4`;
-        const apiURL = `${BASE_URL}/dipto/ytDl3?link=${encodeURIComponent(video.videoId)}&format=mp4`;
+    await m.reply("_Please wait your download is on progress..._");
 
-        const response = await axios.get(apiURL);
-        const data = response.data;
+    let mp4 = null;
+    try {
+      const result = await ytdownload(url);
+      mp4 = result?.mp4;
+    } catch (e) {}
 
-        if (!data.downloadLink) {
-          return client.sendMessage(from, {
-            text: 'Failed to retrieve the MP4 download link.'
-          }, { quoted: m });
-	} 
-	
-	
-await client.sendMessage(from, {
-          video: { url: data.downloadLink },
-          mimetype: 'video/mp4', 
-	  fileName
-        }, { quoted: m });
+    if (mp4) {
+      await client.sendMessage(m.chat, {
+        video: { url: mp4 },
+        mimetype: "video/mp4",
+        fileName: `${video.title}.mp4`
+      }, { quoted: m });
+    } else {
+      await m.reply("⚠️ Fast method failed. Downloading video, please wait...");
+      const filePath = await downloadVideo(url, '360p');
 
-      } catch (err) {
-        console.error('[PLAY] Error:', err);
-        await client.sendMessage(from, {
-          text: 'An error occurred while processing your request.'
-        }, { quoted: m });
+      await client.sendMessage(m.chat, {
+        video: fs.readFileSync(filePath),
+        mimetype: "video/mp4",
+        fileName: `${video.title}.mp4`
+      }, { quoted: m });
+
+      fs.unlinkSync(filePath);
+    }
+
+  } catch (err) {
+    return m.reply("❌ Download failed: " + err);
+  }
 }
-      }
   break;
 
 //========================================================================================================================//		      
