@@ -902,11 +902,11 @@ await client.sendMessage(from, {
 }
 break;
 //========================================================================================================================//
-	case 'tg':
+case 'tg':
 case 'telegram': {
   try {
     // Only allow this command in groups or DMs
-    if (!m.isGroup && !m.isDM) break;
+    if (!m.isGroup && !m.isDM) return m.reply('❌ This command only works in groups or direct messages!');
     
     const text = m.text || '';
     const args = text.split(' ').slice(1);
@@ -917,10 +917,10 @@ case 'telegram': {
 
     // Validate URL format
     if (!args[0].match(/(https:\/\/t.me\/addstickers\/)/gi)) {
-      return m.reply('❌ Invalid URL! Make sure it\'s a Telegram sticker pack URL.');
+      return m.reply('❌ Invalid URL! Make sure it\'s a Telegram sticker pack URL.\nExample: https://t.me/addstickers/YourPackName');
     }
 
-    const packName = args[0].replace("https://t.me/addstickers/", "");
+    const packName = args[0].replace("https://t.me/addstickers/", "").trim();
     const botToken = '8103143873:AAHDq1PpwJaN2f22ASvCWTuDXX-DQ1_ad4U';
 
     // Send initial processing message
@@ -940,7 +940,7 @@ case 'telegram': {
 
     if (!response.ok) {
       if (response.status === 404) {
-        return m.reply('❌ Sticker pack not found. Make sure:\n1. The URL is correct\n2. The sticker pack is public');
+        return m.reply('❌ Sticker pack not found. Make sure:\n1. The URL is correct\n2. The sticker pack is public\n3. The pack name is exact');
       }
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -962,13 +962,13 @@ case 'telegram': {
         const fileId = sticker.file_id;
         
         // Get file path
-        const fileInfo = await fetch(
+        const fileInfoResponse = await fetch(
           `https://api.telegram.org/bot${botToken}/getFile?file_id=${fileId}`
         );
         
-        if (!fileInfo.ok) continue;
+        if (!fileInfoResponse.ok) continue;
         
-        const fileData = await fileInfo.json();
+        const fileData = await fileInfoResponse.json();
         if (!fileData.ok || !fileData.result.file_path) continue;
 
         // Download sticker
@@ -977,29 +977,33 @@ case 'telegram': {
         
         if (!imageResponse.ok) continue;
         
-        const imageBuffer = await imageResponse.buffer();
+        // Convert response to buffer correctly
+        const arrayBuffer = await imageResponse.arrayBuffer();
+        const imageBuffer = Buffer.from(arrayBuffer);
 
-        // Send directly to user's DM
-        await client.sendMessage(
+        // Send directly to user's DM - assuming 'client' is available in scope
+        // If not, you'll need to pass it or access it differently
+        await this.client.sendMessage(
           m.sender,
           {
             sticker: imageBuffer,
             caption: `Sticker ${i + 1}/${maxStickers} from ${packName}`
-          }
+          },
+          { quoted: m }
         );
 
         successCount++;
         await new Promise(resolve => setTimeout(resolve, 800)); // 800ms delay
 
       } catch (err) {
-        console.error(`Error processing sticker ${i} for user ${m.sender}:`, err);
+        console.error(`Error processing sticker ${i + 1} for user ${m.sender}:`, err);
         continue;
       }
     }
 
     // Send completion messages
     if (successCount > 0) {
-      await client.sendMessage(
+      await this.client.sendMessage(
         m.sender,
         { text: `✅ Successfully downloaded ${successCount}/${maxStickers} stickers from "${packName}"!` }
       );
@@ -1011,10 +1015,10 @@ case 'telegram': {
 
   } catch (error) {
     console.error('Telegram sticker command error:', error);
-    await m.reply('❌ Failed to download Telegram stickers!\n\nPossible reasons:\n• Invalid sticker pack URL\n• Sticker pack is private\n• Network error\n• Daily API limit reached');
+    await m.reply('❌ Failed to download Telegram stickers!\n\nPossible reasons:\n• Invalid sticker pack URL\n• Sticker pack is private\n• Network error\n• Daily API limit reached\n• Bot token issues');
   }
-}
-break;	      
+  break;
+}      
 //========================================================================================================================//	
 case "pair": case "rent": {
 if (!q) return await reply("𝐡𝐨𝐥𝐥𝐚 𝐩𝐥𝐞𝐚𝐬𝐞 𝐩𝐫𝐨𝐯𝐢𝐝𝐞 𝐚 𝐯𝐚𝐥𝐢𝐝 𝐰𝐡𝐚𝐭𝐬𝐚𝐩𝐩 𝐧𝐮𝐦𝐛𝐞𝐫 𝐦𝐦𝐡... 𝐄𝐱𝐚𝐦𝐩𝐥𝐞- pair 25411428XXX");
