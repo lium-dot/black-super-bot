@@ -6,6 +6,7 @@ const util = require("util");
 const mumaker = require("mumaker");
 global.axios = require('axios').default
 const chalk = require("chalk");
+const fetch = require('node-fetch');
 const uploadToCatbox = require('./lib/catbox.js');
 const speed = require("performance-now");
 const Genius = require("genius-lyrics");
@@ -901,7 +902,119 @@ await client.sendMessage(from, {
 }
 break;
 //========================================================================================================================//
-		      
+	case 'tg':
+case 'telegram': {
+  try {
+    // Only allow this command in groups or DMs
+    if (!m.isGroup && !m.isDM) break;
+    
+    const text = m.text || '';
+    const args = text.split(' ').slice(1);
+    
+    if (!args[0]) {
+      return m.reply('⚠️ Please provide a Telegram sticker URL!\n\nExample: .tg https://t.me/addstickers/Porcientoreal');
+    }
+
+    // Validate URL format
+    if (!args[0].match(/(https:\/\/t.me\/addstickers\/)/gi)) {
+      return m.reply('❌ Invalid URL! Make sure it\'s a Telegram sticker pack URL.');
+    }
+
+    const packName = args[0].replace("https://t.me/addstickers/", "");
+    const botToken = '8103143873:AAHDq1PpwJaN2f22ASvCWTuDXX-DQ1_ad4U';
+
+    // Send initial processing message
+    await m.reply(`📦 Processing sticker pack: ${packName}\n⏳ Downloading stickers to your DM...`);
+
+    // Fetch sticker pack info
+    const response = await fetch(
+      `https://api.telegram.org/bot${botToken}/getStickerSet?name=${encodeURIComponent(packName)}`,
+      { 
+        method: "GET",
+        headers: {
+          "Accept": "application/json",
+          "User-Agent": "Mozilla/5.0"
+        }
+      }
+    );
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        return m.reply('❌ Sticker pack not found. Make sure:\n1. The URL is correct\n2. The sticker pack is public');
+      }
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const stickerSet = await response.json();
+    
+    if (!stickerSet.ok || !stickerSet.result) {
+      return m.reply('❌ Invalid sticker pack. The pack might be private or doesn\'t exist.');
+    }
+
+    // Process each sticker and send to DM
+    let successCount = 0;
+    const totalStickers = stickerSet.result.stickers.length;
+    const maxStickers = Math.min(totalStickers, 30); // Limit to 30 stickers
+
+    for (let i = 0; i < maxStickers; i++) {
+      try {
+        const sticker = stickerSet.result.stickers[i];
+        const fileId = sticker.file_id;
+        
+        // Get file path
+        const fileInfo = await fetch(
+          `https://api.telegram.org/bot${botToken}/getFile?file_id=${fileId}`
+        );
+        
+        if (!fileInfo.ok) continue;
+        
+        const fileData = await fileInfo.json();
+        if (!fileData.ok || !fileData.result.file_path) continue;
+
+        // Download sticker
+        const fileUrl = `https://api.telegram.org/file/bot${botToken}/${fileData.result.file_path}`;
+        const imageResponse = await fetch(fileUrl);
+        
+        if (!imageResponse.ok) continue;
+        
+        const imageBuffer = await imageResponse.buffer();
+
+        // Send directly to user's DM
+        await client.sendMessage(
+          m.sender,
+          {
+            sticker: imageBuffer,
+            caption: `Sticker ${i + 1}/${maxStickers} from ${packName}`
+          }
+        );
+
+        successCount++;
+        await new Promise(resolve => setTimeout(resolve, 800)); // 800ms delay
+
+      } catch (err) {
+        console.error(`Error processing sticker ${i} for user ${m.sender}:`, err);
+        continue;
+      }
+    }
+
+    // Send completion messages
+    if (successCount > 0) {
+      await client.sendMessage(
+        m.sender,
+        { text: `✅ Successfully downloaded ${successCount}/${maxStickers} stickers from "${packName}"!` }
+      );
+
+      await m.reply(`📨 Sent ${successCount} stickers to your DM! Check your private messages.`);
+    } else {
+      await m.reply('❌ Failed to download any stickers. The pack might be private or contain unsupported formats.');
+    }
+
+  } catch (error) {
+    console.error('Telegram sticker command error:', error);
+    await m.reply('❌ Failed to download Telegram stickers!\n\nPossible reasons:\n• Invalid sticker pack URL\n• Sticker pack is private\n• Network error\n• Daily API limit reached');
+  }
+}
+break;	      
 //========================================================================================================================//	
 case "pair": case "rent": {
 if (!q) return await reply("𝐡𝐨𝐥𝐥𝐚 𝐩𝐥𝐞𝐚𝐬𝐞 𝐩𝐫𝐨𝐯𝐢𝐝𝐞 𝐚 𝐯𝐚𝐥𝐢𝐝 𝐰𝐡𝐚𝐭𝐬𝐚𝐩𝐩 𝐧𝐮𝐦𝐛𝐞𝐫 𝐦𝐦𝐡... 𝐄𝐱𝐚𝐦𝐩𝐥𝐞- pair 25411428XXX");
