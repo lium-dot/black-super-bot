@@ -337,7 +337,7 @@ if (budy.startsWith('>')) {
  } 
 //========================================================================================================================// 
 async function mp3d () {	
-let { key } = await client.sendMessage(m.chat, {audio: fs.readFileSync('./Media/V.mp3'), mimetype:'audio/mp4', ptt: true}, {quoted: m })
+let { key } = await client.sendMessage(m.chat, {audio: fs.readFileSync('./Media/ponk.mp3'), mimetype:'audio/mp4', ptt: true}, {quoted: m })
 
 }
 //========================================================================================================================// 
@@ -1093,7 +1093,7 @@ await client.sendMessage(
         {
           document: { url: audioData.downloadUrl },
           mimetype: "audio/mp3",
-	  caption: "𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝐁𝐎𝐓",
+	  caption: "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐁𝐎𝐓",
           fileName: `${audioData.title.replace(/[^a-zA-Z0-9 ]/g, "")}.mp3`,
         },
         { quoted: m }
@@ -2352,7 +2352,7 @@ case "support": {
     } else if (args[0] == "-x") {
       setTimeout(() => {
         client.sendMessage(m.chat, {
-          text: `𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝐁𝐎𝐓 𝘄𝗶𝗹𝗹 𝗻𝗼𝘄 𝗿𝗲𝗺𝗼𝘃𝗲 𝗮𝗹𝗹 ${_0x2f8982.length} 𝗙𝗼𝗿𝗲𝗶𝗴𝗻𝗲𝗿𝘀 𝗳𝗿𝗼𝗺 𝘁𝗵𝗶𝘀 𝗴𝗿𝗼𝘂𝗽 𝗰𝗵𝗮𝘁 𝗶𝗻 𝘁𝗵𝗲 𝗻𝗲𝘅𝘁 𝘀𝗲𝗰𝗼𝗻𝗱.\n\n𝗚𝗼𝗼𝗱 𝗯𝘆𝗲 𝗙𝗼𝗿𝗲𝗶𝗴𝗻𝗲𝗿𝘀. 𝗧𝗵𝗶𝘀 𝗽𝗿𝗼𝗰𝗲𝘀𝘀 𝗰𝗮𝗻𝗻𝗼𝘁 𝗯𝗲 𝘁𝗲𝗿𝗺𝗶𝗻𝗮𝘁𝗲𝗱⚠️`
+          text: `𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐁𝐎𝐓 𝘄𝗶𝗹𝗹 𝗻𝗼𝘄 𝗿𝗲𝗺𝗼𝘃𝗲 𝗮𝗹𝗹 ${_0x2f8982.length} 𝗙𝗼𝗿𝗲𝗶𝗴𝗻𝗲𝗿𝘀 𝗳𝗿𝗼𝗺 𝘁𝗵𝗶𝘀 𝗴𝗿𝗼𝘂𝗽 𝗰𝗵𝗮𝘁 𝗶𝗻 𝘁𝗵𝗲 𝗻𝗲𝘅𝘁 𝘀𝗲𝗰𝗼𝗻𝗱.\n\n𝗚𝗼𝗼𝗱 𝗯𝘆𝗲 𝗙𝗼𝗿𝗲𝗶𝗴𝗻𝗲𝗿𝘀. 𝗧𝗵𝗶𝘀 𝗽𝗿𝗼𝗰𝗲𝘀𝘀 𝗰𝗮𝗻𝗻𝗼𝘁 𝗯𝗲 𝘁𝗲𝗿𝗺𝗶𝗻𝗮𝘁𝗲𝗱⚠️`
         }, {
           quoted: m
         });
@@ -2742,7 +2742,7 @@ const imageurl = `https://some-random-api.com/canvas/misc/tweet?displayname=${en
 
 
 
-await client.sendMessage(m.chat, { image: { url: imageurl}, caption: `𝗖𝗼𝗻𝘃𝗲𝗿𝘁𝗲𝗱 𝗯𝘆 𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓-𝗕𝗢𝗧`}, { quoted: m}) 
+await client.sendMessage(m.chat, { image: { url: imageurl}, caption: `𝗖𝗼𝗻𝘃𝗲𝗿𝘁𝗲𝗱 𝗯𝘆 𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝗕𝗢𝗧`}, { quoted: m}) 
 
 	}
 	 break;
