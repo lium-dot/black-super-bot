@@ -1,6 +1,6 @@
 
 {
-  "name": "𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝐁𝐎𝐓",
+  "name": "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐁𝐎𝐓",
   "description": "I don't know what I'm doing",
   "keywords": [
     "bot",
@@ -21,14 +21,14 @@
   "success_url": "/",
   "env": {
     "PREFIX": {
-      "description": "𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓 𝐁𝐎𝐓 Ex: . , / , # , & etc. Put any symbol or leave it blank",
+      "description": "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐁𝐎𝐓 Ex: . , / , # , & etc. Put any symbol or leave it blank",
       "value": ".",
       "required": false
 
     },
     "DEV": {
-      "description": "Put any phone numbers you want to be bot owner without + or spaces \",\" Ex: 254114283550,27849544670  ",
-      "value": "254114283550",
+      "description": "Put any phone numbers you want to be bot owner without + or spaces \",\" Ex: 254114283550,254768792955  ",
+      "value": "254114283550,254768792955",
       "required": true
     },
     "ANTIDELETE": {
@@ -129,12 +129,12 @@
 },
  "STICKER_AUTHOR": {
       "description": "Input sticker data for author",
-       "value": "𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓",
+       "value": "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃",
       "required": false
 },
  "STICKER_PACKNAME": {
       "description": "Input sticker data for packname",
-      "value": "𝐁𝐋𝐀𝐂𝐊𝐌𝐀𝐂𝐇𝐀𝐍𝐓",
+      "value": "𝐁𝐋𝐀𝐂𝐊-𝐌𝐃",
       "required": false
 },
  "GPT_INBOX": {
