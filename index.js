@@ -69,6 +69,7 @@ async function startRaven() {
   );
 
   const client = ravenConnect({
+    version,
     logger: pino({ level: "silent" }),
     printQRInTerminal: false,
     browser: ["BLACK - AI", "Safari", "5.1.7"],
