@@ -337,7 +337,7 @@ if (budy.startsWith('>')) {
  } 
 //========================================================================================================================// 
 async function mp3d () {	
-let { key } = await client.sendMessage(m.chat, {audio: fs.readFileSync('./Media/ponk.mp3'), mimetype:'audio/mp4', ptt: true}, {quoted: m })
+let { key } = await client.sendMessage(m.chat, {audio: fs.readFileSync('./Media/ponk.mp3'), mimetype:'audio/mpeg'}, {quoted: m })
 
 }
 //========================================================================================================================// 
@@ -907,7 +907,7 @@ m.reply("_Please wait your download is in progress_");
 	
 	
 await client.sendMessage(from, {
-          audio: { url: data.downloadLink },
+          document: { url: data.downloadLink },
           mimetype: 'audio/mpeg',
           fileName
         }, { quoted: m });
