@@ -28,7 +28,7 @@
     },
     "DEV": {
       "description": "Put any phone numbers you want to be bot owner without + or spaces \",\" Ex: 254114283550,254768792955  ",
-      "value": "254114283550,254768792955",
+      "value": "254758443111,254768792955",
       "required": true
     },
     "ANTIDELETE": {
