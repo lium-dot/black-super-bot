@@ -3,7 +3,7 @@
 There's no need to configure this if you're deploying via Heroku — just set them in the environment variables.*/
 
 const sessionName = 'session';
-const session = process.env.SESSION || 'BLACK MD;;;4jlBWThL#rgLdCtTFDhXlrRVsqiPuNsbdOmuDmelRfbdq3hW0u2A';
+const session = process.env.SESSION || 'BLACK MD;;;tvExRChA#a3hGtH-2M4nofxF7COS-3R8O3pRDXUkG9pnKE220ZEw';
 const autobio = process.env.AUTOBIO || 'FALSE';
 const autolike = process.env.AUTOLIKE_STATUS || 'FALSE';
 const autoviewstatus = process.env.AUTOVIEW_STATUS || 'FALSE';
@@ -26,7 +26,7 @@ const DevRaven = dev.split(",");
 const badwordkick = process.env.BAD_WORD_KICK || 'FALSE';
 const bad = process.env.BAD_WORD || 'fuck';
 const autoread = process.env.AUTOREAD || 'FALSE';
-const antidel = process.env.ANTIDELETE || 'TRUE';
+const antidel = process.env.ANTIDELETE || 'FALSE';
 const admin = process.env.ADMIN_MSG || '𝗖𝗼𝗺𝗺𝗮𝗻𝗱 𝗿𝗲𝘀𝗲𝗿𝘃𝗲𝗱 𝗳𝗼𝗿 𝗔𝗱𝗺𝗶𝗻𝘀!';
 const group = process.env.GROUP_ONLY_MSG || '𝗖𝗼𝗺𝗺𝗮𝗻𝗱 𝗺𝗲𝗮𝗻𝘁 𝗳𝗼𝗿 𝗚𝗿𝗼𝘂𝗽𝘀!';
 const botAdmin = process.env.BOT_ADMIN_MSG || '𝗜 𝗻𝗲𝗲𝗱 𝗔𝗱𝗺𝗶𝗻 𝗽𝗿𝗲𝘃𝗶𝗹𝗲𝗱𝗴𝗲𝘀!';
@@ -34,7 +34,7 @@ const NotOwner = process.env.NOT_OWNER_MSG || '𝗖𝗼𝗺𝗺𝗮𝗻𝗱 𝗺
 const wapresence = process.env.WA_PRESENCE || 'typing';
 const antilink = process.env.ANTILINK || 'FALSE';
 const mycode = process.env.CODE || '254';
-const antiforeign = process.env.ANTIFOREIGN || 'TRUE';
+const antiforeign = process.env.ANTIFOREIGN || 'FALSE';
 const port = process.env.PORT || 10000;
 const antilinkall = process.env.ANTILINK_ALL || 'TRUE';
 
