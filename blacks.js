@@ -2214,7 +2214,7 @@ case "support": {
         contextInfo: {
             externalAdReply: {
                 title: "🅿🆁🅴🅼🅸🆄🅼 🆂🆄🅿🅿🅾🆁🆃",
-                body: "BLACKY BOT v3.0 | Instant Response",
+                body: "BLACKY BOT v1.0 | Instant Response",
                 thumbnail: { url: 𝕭𝖑𝖆𝖈𝖐𝖞.media.banner },
                 sourceUrl: 𝕭𝖑𝖆𝖈𝖐𝖞.links.channel
             }
@@ -4032,7 +4032,7 @@ break;
 //========================================================================================================================//		      
 case 'sc': case 'script': case 'repo':
 
- client.sendMessage(m.chat, { image: { url: `https://files.catbox.moe/5grvn3.jpg` }, caption: 
+ client.sendMessage(m.chat, { image: { url: `https://files.catbox.moe/pevpi2.jpg` }, caption: 
 ` 𝙃𝙀𝙇𝙇𝙊👋 *${pushname}*,
 ╔══≪ ✦ ≫══════════≪ ✦ ≫══╗
           𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐕3
