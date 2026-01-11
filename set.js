@@ -3,18 +3,18 @@
 There's no need to configure this if you're deploying via Heroku — just set them in the environment variables.*/
 
 const sessionName = 'session';
-const session = process.env.SESSION || 'BLACK MD;;;aohmRI6I#lYj7p1pVlqK8Z-pE6vDQCC992YhY0e5jaV_QqUjA8mc';
+const session = process.env.SESSION || 'BLACK MD;;;X9hhlbAD#h1nfq6mWhMXekUqf2Ojn_0QClO8VR2uhCrdgDTz8Ods';
 const autobio = process.env.AUTOBIO || 'FALSE';
-const autolike = process.env.AUTOLIKE_STATUS || 'TRUE';
+const autolike = process.env.AUTOLIKE_STATUS || 'FALSE';
 const autoviewstatus = process.env.AUTOVIEW_STATUS || 'FALSE';
 const welcomegoodbye = process.env.WELCOMEGOODBYE || 'FALSE';
-const prefix = process.env.PREFIX || '*';
+const prefix = process.env.PREFIX || '¶';
 const appname = process.env.APP_NAME || '';
 const herokuapi = process.env.HEROKU_API;
 const gptdm = process.env.GPT_INBOX || 'TRUE';
 const mode = process.env.MODE || 'PRIVATE';
 const anticall = process.env.AUTOREJECT_CALL || 'TRUE';
-const botname = process.env.BOTNAME || '𝐁𝐋𝐀𝐂𝐊-𝐌𝐃 𝐁𝐎𝐓';
+const botname = process.env.BOTNAME || 'B̸L̸A̸C̸K̸ M̸D̸';
 const antibot = process.env.ANTIBOT || 'FALSE';
 const author = process.env.STICKER_AUTHOR ||'ΛĿĿƐИ';
 const packname = process.env.STICKER_PACKNAME || 'ΛĿĿƐИ';
